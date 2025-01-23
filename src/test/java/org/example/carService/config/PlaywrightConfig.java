@@ -3,6 +3,7 @@ package org.example.carService.config;
 import com.microsoft.playwright.*;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.testng.annotations.Optional;
 
 import java.nio.file.Path;
 
@@ -21,16 +22,16 @@ public class PlaywrightConfig {
     private final Boolean headless;
     private final String downloadPath = "target/download"; // todo: MOVE TO TEST CONFIG
 
-    public PlaywrightConfig(String browserName, Boolean traceEnabled, Boolean headless) {
+    public PlaywrightConfig(@Optional("chrome") String browserName, @Optional("true") Boolean traceEnabled, @Optional("false") Boolean headless) {
+        this.browserName = browserName;
+        this.headless = headless;
         this.playwright = createPlaywright();
         this.browser = createBrowser();
-        this.browserName = browserName;
         this.browserContext = createBrowserContext(this.browser);
         this.traceEnabled = traceEnabled;
         if (this.traceEnabled) {
             startTraceRecording();
         }
-        this.headless = headless;
         this.page = browserContext.newPage();
         log.info("Playwright config has been set and created");
     }
@@ -53,7 +54,7 @@ public class PlaywrightConfig {
                     .setChannel("chrome") // It makes Playwright run Google Chrome (not Chromium)
                     .setHeadless(this.headless) // Visible or not visible mode for test executing
                     .setDevtools(false) // Show dev console or not during browser working
-//                    .setSlowMo() // For running tests in slow-motion mode
+//                    .setSlowMo(6000) // For running tests in slow-motion mode
                     .setDownloadsPath(downloadPath)); // Path to save files from browser
             case "firefox" -> playwright.firefox().launch(new BrowserType.LaunchOptions()
                     .setChannel("firefox")
@@ -61,7 +62,7 @@ public class PlaywrightConfig {
                     .setDevtools(false)
                     .setDownloadsPath(downloadPath));
             case "safari" -> playwright.webkit().launch(new BrowserType.LaunchOptions()
-                    .setChannel("firefox")
+                    .setChannel("webkit")
                     .setHeadless(this.headless)
                     .setDevtools(false)
                     .setDownloadsPath(downloadPath));
@@ -76,7 +77,7 @@ public class PlaywrightConfig {
      */
     public BrowserContext createBrowserContext(Browser browser) {
         Browser.NewContextOptions options = new Browser.NewContextOptions()
-                .setViewportSize(2880, 1800) // Размер окна браузера.
+                .setViewportSize(1680, 772) // Размер окна браузера.
                 .setIgnoreHTTPSErrors(true); // Указывает Playwright игнорировать ошибки, связанные с сертификатами HTTPS.
         return browser.newContext(options);
     }

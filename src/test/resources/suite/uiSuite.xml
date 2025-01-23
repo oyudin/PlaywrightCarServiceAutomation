@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="UI suite" verbose="1">
+    <test name="UI tests Chrome" parallel="methods" thread-count="1">
+        <parameter name="browserName" value="chrome"/>
+        <parameter name="headless" value="false"/>
+        <packages>
+            <package name="org.example.carService.uiTests"/>
+        </packages>
+    </test>
+</suite>

@@ -6,7 +6,6 @@ import com.microsoft.playwright.Tracing;
 import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.example.carService.config.PlaywrightConfig;
 import org.testng.IHookCallBack;
@@ -112,7 +111,7 @@ public abstract class BaseUiTest implements IHookable {
     /**
      * Назначение: выполняется перед каждым тестом.
      * Создаёт и сохраняет конфигурацию браузера на основе переданных параметров (название браузера, режим headless).
-     *
+     * <p>
      * Параметры передаются через TestNG XML-конфигурацию (testng.xml).
      * Если параметры не указаны в файле конфигурации, используются значения, заданные в аннотации @Optional.
      * Значения по умолчанию:
@@ -161,20 +160,6 @@ public abstract class BaseUiTest implements IHookable {
      * С помощью @SneakyThrows обработка исключений скрывается. Lombok автоматически добавляет необходимый код для
      * пробрасывания исключений. Это упрощает читаемость, особенно если вы уверены, что исключения маловероятны
      * или не критичны для работы программы.
-     */
-    @SneakyThrows
-    private void addTraceToAllureReport(String methodName) {
-        if (TRACE_ENABLED) {
-            log.warn("Stop tracing for the test {}", methodName);
-            var tracePath = getTraceFilePath(methodName);
-            getPlaywrightConfig().getBrowserContext().tracing().stop(new Tracing.StopOptions().setPath(tracePath));
-            Allure.addAttachment("trace", Files.newInputStream(tracePath));
-        } else {
-            Allure.addAttachment("source.html", "text/html", getPlaywrightConfig().getPage().content());
-        }
-    }
-
-    /**
      * Завершает трассировку и сохраняет её в файл, прикрепляя его к Allure-отчёту.
      *
      * @param methodName имя тестового метода, для которого завершается трассировка.
