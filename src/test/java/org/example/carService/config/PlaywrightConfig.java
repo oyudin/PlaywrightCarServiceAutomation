@@ -1,6 +1,5 @@
 package org.example.carService.config;
 
-
 import com.microsoft.playwright.*;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.nio.file.Path;
 
 /**
- * This is the 1 class what should I start with
+ * This is the 1 class what I should to start with
  */
 @Slf4j
 @Data
