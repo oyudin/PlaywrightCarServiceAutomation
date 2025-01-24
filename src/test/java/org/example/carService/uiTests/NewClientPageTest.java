@@ -25,8 +25,8 @@ public class NewClientPageTest extends BaseUiTest {
                 .enterClientSurname(generateLastName())
                 .enterClientPhoneNumber(generatePhoneNumber())
                 .clickOnButton(newClientPage.getSaveButton(), "Save")
-                .shouldHave(newClientPage.getSuccessMessageLocator(), "Success Message");
-        newClientPage.verifySuccessCreationMessage();
+                .shouldHave(newClientPage.getSuccessMessageLocator(), "Success Message")
+                .verifyNotificationMessage(newClientPage.getSuccessMessageLocator(), newClientPage.getSuccessMessageValue());
     }
 
 }

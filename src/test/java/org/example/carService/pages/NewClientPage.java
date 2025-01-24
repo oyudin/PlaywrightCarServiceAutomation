@@ -13,8 +13,8 @@ public class NewClientPage extends AbstractBasePage {
 
     private static final String PAGE_URL = "http://localhost:8080/carservice/clients/add";
     private final String pageName = "Create New Client";
-    private static final String headerValue = "Новий клієнт";
-    private static final String successMessageValue = "Клієнт успішно створений!";
+    private final String headerValue = "Новий клієнт";
+    private final String successMessageValue = "Клієнт успішно створений!";
     private final Page playwrightPage = newPage();
     private final Locator headerLocator = playwrightPage.locator("//h2[text() = 'Новий клієнт']");
     private final Locator nameInput = playwrightPage.locator("input[name='name']");
@@ -49,13 +49,6 @@ public class NewClientPage extends AbstractBasePage {
     public NewClientPage enterClientPhoneNumber(String phoneNumber) {
         phoneNumberInput.fill(phoneNumber);
         assertThat(phoneNumberInput).hasValue(phoneNumber);
-        return this;
-    }
-
-    @Step("Verifying success notification message is correct")
-    public NewClientPage verifySuccessCreationMessage() {
-        var message = successMessageLocator.innerText();
-        Assert.assertEquals(message.trim(), successMessageValue);
         return this;
     }
 }

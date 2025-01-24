@@ -4,17 +4,16 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import io.qameta.allure.Step;
 import lombok.Getter;
-import org.testng.Assert;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @Getter
 public class NewCarPage extends AbstractBasePage {
 
-    private static final String PAGE_URL = "http://localhost:8080/carservice/clients/1/cars/add";
+    private static final String PAGE_URL = "http://localhost:8080/carservice/clients/%s/cars/add";
     private final String pageName = "Create New Car";
-    private static final String headerValue = "Нове авто";
-    private static final String successMessageValue = "Car created successfully!";
+    private final String headerValue = "Нове авто";
+    private final String successMessageValue = "A new car added";
     private final Page playwrightPage = newPage();
     private final Locator headerLocator = playwrightPage.locator("//h2[text() = 'Нове авто']");
     private final Locator carNumberInput = playwrightPage.locator("input[name='number']");
@@ -24,17 +23,11 @@ public class NewCarPage extends AbstractBasePage {
     private final Locator addButton = playwrightPage.locator("button[type='submit']");
     private final Locator successMessageLocator = playwrightPage.locator("//div[@class='alert alert-success']");
 
-    @Override
-    public NewCarPage openPage(String pageName) {
-        playwrightPage.navigate(PAGE_URL);
+    @Step("The car page is opened")
+    public NewCarPage openPage(String clientId) {
+        playwrightPage.navigate(String.format(PAGE_URL, clientId));
         assertThat(headerLocator).isVisible();
         assertThat(headerLocator).hasText(headerValue);
-        return this;
-    }
-
-    @Override
-    public NewCarPage shouldHave(Locator locator, String elementName) {
-        assertThat(locator).isVisible();
         return this;
     }
 
@@ -63,14 +56,6 @@ public class NewCarPage extends AbstractBasePage {
     public NewCarPage enterCarModel(String model) {
         modelInput.fill(model);
         assertThat(modelInput).hasValue(model);
-        return this;
-    }
-
-    @Step("Verifying success notification message is correct")
-    public NewCarPage verifySuccessCreationMessage() {
-        var message = successMessageLocator.innerText();
-        System.err.println(message);
-        Assert.assertEquals(message.trim(), successMessageValue);
         return this;
     }
 }
