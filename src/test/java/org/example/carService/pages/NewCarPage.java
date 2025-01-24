@@ -36,7 +36,7 @@ public class NewCarPage extends AbstractBasePage {
     private final Locator addButton = playwrightPage.locator("button[type='submit']");
     private final Locator successMessageLocator = playwrightPage.locator("//div[@class='alert alert-success']");
 
-    @Step("The car page is opened")
+    @Step("The car creating page is opened")
     public NewCarPage openPage(String clientId) {
         playwrightPage.navigate(String.format(PAGE_URL, clientId));
         assertThat(headerLocator).isVisible();
