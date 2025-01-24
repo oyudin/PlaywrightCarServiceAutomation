@@ -22,7 +22,7 @@ public class PlaywrightConfig {
     private final Boolean headless;
     private final String downloadPath = "target/download"; // todo: MOVE TO TEST CONFIG
 
-    public PlaywrightConfig(@Optional("chrome") String browserName, @Optional("true") Boolean traceEnabled, @Optional("false") Boolean headless) {
+    public PlaywrightConfig(@Optional("chrome") String browserName, @Optional("false") Boolean traceEnabled, @Optional("false") Boolean headless) {
         this.browserName = browserName;
         this.headless = headless;
         this.playwright = createPlaywright();
