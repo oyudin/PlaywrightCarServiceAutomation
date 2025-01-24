@@ -54,7 +54,7 @@ public class PlaywrightConfig {
                     .setChannel("chrome") // It makes Playwright run Google Chrome (not Chromium)
                     .setHeadless(this.headless) // Visible or not visible mode for test executing
                     .setDevtools(false) // Show dev console or not during browser working
-//                    .setSlowMo(6000) // For running tests in slow-motion mode
+//                    .setSlowMo(600) // For running tests in slow-motion mode
                     .setDownloadsPath(downloadPath)); // Path to save files from browser
             case "firefox" -> playwright.firefox().launch(new BrowserType.LaunchOptions()
                     .setChannel("firefox")

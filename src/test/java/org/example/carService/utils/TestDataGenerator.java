@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 public class TestDataGenerator {
-
     private static final Faker faker = new Faker();
 
     public static String generateFirstName() {

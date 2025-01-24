@@ -1,6 +1,5 @@
 package org.example.carService.uiTests;
 
-import io.qameta.allure.Description;
 import org.example.carService.BaseUiTest;
 
 import org.example.carService.pages.MainPage;

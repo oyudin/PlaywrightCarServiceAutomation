@@ -1,5 +1,6 @@
 package org.example.carService.uiTests;
 
+import jdk.jfr.Description;
 import org.example.carService.BaseUiTest;
 import org.example.carService.pages.NewClientPage;
 import org.testng.annotations.BeforeMethod;
@@ -18,6 +19,7 @@ public class NewClientPageTest extends BaseUiTest {
     }
 
     @Test
+    @Description("")
     public void createNewClient() {
         newClientPage.enterClientName(generateFirstName())
                 .enterClientSurname(generateLastName())
