@@ -1,6 +1,6 @@
 package org.example.carService.uiTests;
 
-import jdk.jfr.Description;
+import io.qameta.allure.Description;
 import org.example.carService.BaseUiTest;
 import org.example.carService.pages.NewClientPage;
 import org.testng.annotations.BeforeMethod;
@@ -19,7 +19,15 @@ public class NewClientPageTest extends BaseUiTest {
     }
 
     @Test
-    @Description("")
+    @Description("""
+                    - Client name field should be entered with a valid first name.
+                    - Client surname field should be entered with a valid last name.
+                    - Client phone number should be entered with a valid phone number.
+                    - 'Save' button should be clicked to submit the form.
+                    - A success message should appear upon successful submission.
+                    - The success message should match the expected notification text.
+                    - Ensure proper functionality of success message verification.
+            """)
     public void createNewClient() {
         newClientPage.enterClientName(generateFirstName())
                 .enterClientSurname(generateLastName())

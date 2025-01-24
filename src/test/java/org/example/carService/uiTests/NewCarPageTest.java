@@ -1,5 +1,6 @@
 package org.example.carService.uiTests;
 
+import io.qameta.allure.Description;
 import org.example.carService.BaseUiTest;
 import org.example.carService.pages.NewCarPage;
 import org.testng.annotations.BeforeMethod;
@@ -18,6 +19,15 @@ public class NewCarPageTest extends BaseUiTest {
     }
 
     @Test
+    @Description("""
+                    - Car number field should be entered with a valid car number.
+                    - VIN code should be valid and entered into the appropriate field.
+                    - Car brand should be entered correctly.
+                    - Car model should be entered correctly.
+                    - 'Add' button should be clicked to submit the form.
+                    - A success message should appear upon successful submission.
+                    - The success message should match the expected notification text.
+            """)
     public void createNewCar() {
         newCarPage.enterCarNumber(generateCarNumber())
                 .enterCarVinCode(generateVinCode())
