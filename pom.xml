@@ -193,6 +193,13 @@
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>${allure-maven.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>serve</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
                     <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
