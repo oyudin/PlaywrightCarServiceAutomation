@@ -17,7 +17,7 @@ public class MainPage extends AbstractBasePage {
     private final Locator searchButton = playwrightPage.locator("//button[text()='Пошук']");
 
     public void openPage() {
-        playwrightPage.navigate("http://localhost:8080/carservice/clients");
+//        playwrightPage.navigate("http://localhost:8080/carservice/clients");
     }
 
     @Override
