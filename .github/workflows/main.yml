@@ -31,7 +31,8 @@ jobs:
         run: |
           wget https://github.com/allure-framework/allure2/releases/download/2.18.1/allure-2.18.1.zip
           unzip allure-2.18.1.zip
-          mv allure-2.18.1 /usr/local/bin/allure
+          sudo mv allure-2.18.1 /usr/local/bin/allure
+          sudo ln -s /usr/local/bin/allure/allure /usr/local/bin/allure
 
       - name: Generate Allure HTML report
         run: allure generate target/allure-results --clean --output target/allure-report
