@@ -36,6 +36,6 @@ jobs:
       - name: Деплой отчета в GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH-PAT }}
           publish_dir: ./target/site/allure-maven/index.html
           publish_branch: gh-pages
