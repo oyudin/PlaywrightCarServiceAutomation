@@ -2,6 +2,7 @@ package org.example.carService.uiTests;
 
 import io.qameta.allure.Description;
 import org.example.carService.BaseUiTest;
+import org.example.carService.pages.MainPage;
 import org.example.carService.pages.NewClientPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,10 +12,12 @@ import static org.example.carService.utils.TestDataGenerator.*;
 public class NewClientPageTest extends BaseUiTest {
 
     private NewClientPage newClientPage;
+    private MainPage mainPage;
 
     @BeforeMethod
     public void initAndOpenPage() {
         newClientPage = new NewClientPage();
+        mainPage = new MainPage();
         newClientPage.openPage(newClientPage.getPageName());
     }
 
@@ -37,4 +40,20 @@ public class NewClientPageTest extends BaseUiTest {
                 .verifyNotificationMessage(newClientPage.getSuccessMessageLocator(), newClientPage.getSuccessMessageValue());
     }
 
+    @Test
+    @Description("""
+                    - Client name field should be entered.
+                    - Client surname field should be entered.
+                    - Client phone number should be entered.
+                    - 'Back to clients' button should be clicked.
+                    - The user is navigated to Main page.
+            """)
+    public void cancelCreatingNewClient() {
+        newClientPage.enterClientName(generateFirstName())
+                .enterClientSurname(generateLastName())
+                .enterClientPhoneNumber(generatePhoneNumber())
+                .clickOnButton(newClientPage.getBackToClientsButton(), "Back to Clients");
+        mainPage.isOpened()
+                .shouldHave(mainPage.getSearchButton(), "Search client");
+    }
 }

@@ -22,6 +22,8 @@ public class NewClientPage extends AbstractBasePage {
     private final Locator phoneNumberInput = playwrightPage.locator("input[name='phoneNumber']");
     private final Locator saveButton = playwrightPage.locator("button[type='submit']");
     private final Locator successMessageLocator = playwrightPage.locator("#successMessage");
+    private final Locator backToClientsButton = playwrightPage.locator("a.btn.btn-outline-primary[href='/carservice/clients']");
+
 
     @Override
     public NewClientPage openPage(String pageName) {
