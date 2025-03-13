@@ -38,3 +38,9 @@ jobs:
         with:
           name: allure-report
           path: target/allure-report/allure-maven.html
+
+      - name: Upload Allure statistics as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-statistics
+          path: target/allure-results/*  # Путь к файлам, которые содержат статистику
