@@ -13,10 +13,10 @@ public class NewClientPage extends AbstractBasePage {
 
     private static final String PAGE_URL = "http://localhost:8080/carservice/clients/add";
     private final String pageName = "Create New Client";
-    private final String headerValue = "Новий клієнт";
+    private final String headerValue = "Створити клієнта";
     private final String successMessageValue = "Клієнт успішно створений!";
     private final Page playwrightPage = newPage();
-    private final Locator headerLocator = playwrightPage.locator("//h2[text() = 'Новий клієнт']");
+    private final Locator headerLocator = playwrightPage.locator("//h2[text() = 'Створити клієнта']");
     private final Locator nameInput = playwrightPage.locator("input[name='name']");
     private final Locator surnameInput = playwrightPage.locator("input[name='surname']");
     private final Locator phoneNumberInput = playwrightPage.locator("input[name='phoneNumber']");
