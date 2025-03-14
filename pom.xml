@@ -13,7 +13,6 @@
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <maven-failsafe-plugin.version>3.3.1</maven-failsafe-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -104,47 +103,20 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.17.0</version>
         </dependency>
-
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
+            <!-- Плагин для очистки перед сборкой -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven-jar-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-
-            <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version> <!-- Указана версия плагина -->
                 <configuration>
                     <filesets>
                         <fileset>
@@ -153,6 +125,8 @@
                     </filesets>
                 </configuration>
             </plugin>
+
+            <!-- Плагин для выполнения тестов (unit и интеграционные) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -167,16 +141,13 @@
                         </goals>
                         <configuration>
                             <systemPropertyVariables>
-                                <allure.results.directory>${project.build.directory}/allure-results
-                                </allure.results.directory>
+                                <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                             </systemPropertyVariables>
                             <argLine>
                                 -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                             </argLine>
                             <suiteXmlFiles>
-                                <suiteXmlFile>
-                                    ${project.basedir}/src/test/resources/suite/${default.suiteXmlFile}.xml
-                                </suiteXmlFile>
+                                <suiteXmlFile>${project.basedir}/src/test/resources/suite/${default.suiteXmlFile}.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </execution>
@@ -189,6 +160,8 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
+            <!-- Плагин для генерации отчетов Allure -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
@@ -199,73 +172,5 @@
                 </configuration>
             </plugin>
         </plugins>
-
-
     </build>
-
-    <!--    <profiles>-->
-    <!--        <profile>-->
-    <!--            <id>e2e-tests</id>-->
-    <!--            <build>-->
-    <!--                <plugins>-->
-    <!--                    <plugin>-->
-    <!--                        <artifactId>maven-clean-plugin</artifactId>-->
-    <!--                        <configuration>-->
-    <!--                            <filesets>-->
-    <!--                                <fileset>-->
-    <!--                                    <directory>.allure</directory>-->
-    <!--                                </fileset>-->
-    <!--                            </filesets>-->
-    <!--                        </configuration>-->
-    <!--                    </plugin>-->
-    <!--                    <plugin>-->
-    <!--                        <groupId>org.apache.maven.plugins</groupId>-->
-    <!--                        <artifactId>maven-failsafe-plugin</artifactId>-->
-    <!--                        <version>${maven-failsafe-plugin.version}</version>-->
-    <!--                        <executions>-->
-    <!--                            <execution>-->
-    <!--                                <id>it-tests</id>-->
-    <!--                                <phase>integration-test</phase>-->
-    <!--                                <goals>-->
-    <!--                                    <goal>integration-test</goal>-->
-    <!--                                    <goal>verify</goal>-->
-    <!--                                </goals>-->
-    <!--                                <configuration>-->
-    <!--                                    <systemPropertyVariables>-->
-    <!--                                        <allure.results.directory>${project.build.directory}/allure-results-->
-    <!--                                        </allure.results.directory>-->
-    <!--                                    </systemPropertyVariables>-->
-    <!--                                    <argLine>-->
-    <!--                                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar-->
-    <!--                                    </argLine>-->
-    <!--                                    <suiteXmlFiles>-->
-    <!--                                        <suiteXmlFile>-->
-    <!--                                            ${project.basedir}/src/test/resources/suite/${default.suiteXmlFile}.xml-->
-    <!--                                        </suiteXmlFile>-->
-    <!--                                    </suiteXmlFiles>-->
-    <!--                                </configuration>-->
-    <!--                            </execution>-->
-    <!--                        </executions>-->
-    <!--                        <dependencies>-->
-    <!--                            <dependency>-->
-    <!--                                <groupId>org.aspectj</groupId>-->
-    <!--                                <artifactId>aspectjweaver</artifactId>-->
-    <!--                                <version>${aspectj.version}</version>-->
-    <!--                            </dependency>-->
-    <!--                        </dependencies>-->
-    <!--                    </plugin>-->
-    <!--                    <plugin>-->
-    <!--                        <groupId>io.qameta.allure</groupId>-->
-    <!--                        <artifactId>allure-maven</artifactId>-->
-    <!--                        <version>${allure-maven.version}</version>-->
-    <!--                        <configuration>-->
-    <!--                            <reportDirectory>${project.build.directory}/allure-report</reportDirectory>-->
-    <!--                            <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>-->
-    <!--                        </configuration>-->
-    <!--                    </plugin>-->
-    <!--                </plugins>-->
-    <!--            </build>-->
-    <!--        </profile>-->
-    <!--    </profiles>-->
-
 </project>
