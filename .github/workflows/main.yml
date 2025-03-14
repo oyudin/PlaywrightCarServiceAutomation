@@ -43,10 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-statistics
-          path: target/allure-results/*
-
-      - name: Add CNAME for custom domain
-        run: echo "allure.yourdomain.com" > ./target/allure-report/CNAME
+          path: target/allure-results/*  # Путь к файлам, которые содержат статистику
 
       - name: Deploy Allure Report to GitHub Pages
         if: success()
