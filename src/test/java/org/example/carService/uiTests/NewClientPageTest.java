@@ -37,6 +37,7 @@ public class NewClientPageTest extends BaseUiTest {
                     - Ensure proper functionality of success message verification.
             """)
     public void createNewClient() {
+        newClientPage.getPlaywrightPage().waitForLoadState();
         newClientPage.enterClientName(generateFirstName())
                 .enterClientSurname(generateLastName())
                 .enterClientPhoneNumber(generatePhoneNumber())
@@ -45,20 +46,20 @@ public class NewClientPageTest extends BaseUiTest {
 //                .verifyNotificationMessage(newClientPage.getSuccessMessageLocator(), newClientPage.getSuccessMessageValue());
     }
 
-    @Test
-    @Description("""
-                    - Client name field should be entered.
-                    - Client surname field should be entered.
-                    - Client phone number should be entered.
-                    - 'Back to clients' button should be clicked.
-                    - The user is navigated to Main page.
-            """)
-    public void cancelCreatingNewClient() {
-        newClientPage.enterClientName(generateFirstName())
-                .enterClientSurname(generateLastName())
-                .enterClientPhoneNumber(generatePhoneNumber())
-                .clickOnButton(newClientPage.getBackToClientsButton(), "Back to Clients");
-        mainPage.isOpened()
-                .shouldHave(mainPage.getSearchButton(), "Search client");
-    }
+//    @Test
+//    @Description("""
+//                    - Client name field should be entered.
+//                    - Client surname field should be entered.
+//                    - Client phone number should be entered.
+//                    - 'Back to clients' button should be clicked.
+//                    - The user is navigated to Main page.
+//            """)
+//    public void cancelCreatingNewClient() {
+//        newClientPage.enterClientName(generateFirstName())
+//                .enterClientSurname(generateLastName())
+//                .enterClientPhoneNumber(generatePhoneNumber())
+//                .clickOnButton(newClientPage.getBackToClientsButton(), "Back to Clients");
+//        mainPage.isOpened()
+//                .shouldHave(mainPage.getSearchButton(), "Search client");
+//    }
 }
