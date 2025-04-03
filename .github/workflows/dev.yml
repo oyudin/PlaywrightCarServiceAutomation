@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: DEV Playwright Tests
 
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Maven tests
-        run: mvn clean verify -P dev
+        run: mvn clean verify -Pdev
 
       - name: Generate Allure Report
         run: mvn allure:report
