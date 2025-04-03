@@ -22,7 +22,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Maven tests
-        run: mvn clean verify -Pdev
+        run: mvn clean verify -P dev
 
       - name: Generate Allure Report
         run: mvn allure:report
