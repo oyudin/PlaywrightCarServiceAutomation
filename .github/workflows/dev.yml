@@ -6,7 +6,7 @@ on:
       suite_xml:
         description: 'src/test/resources/suite/uiSuite.xml'
         required: true
-        default: 'src/test/resources/smoke-tests.xml'
+        default: 'src/test/resources/suite/uiSuite.xml'
 
 jobs:
   test:
