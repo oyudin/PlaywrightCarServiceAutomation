@@ -126,6 +126,7 @@
                         <configuration>
                             <suiteXmlFiles>
                                 src/test/resources/suite/uiSuite.xml
+                                src/test/resources/suite/uiSuite2.xml
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
