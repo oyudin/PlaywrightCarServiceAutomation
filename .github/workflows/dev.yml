@@ -27,7 +27,8 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Maven tests
-        run: mvn clean verify -P dev -DsuiteXmlFile=${{ github.event.inputs.suiteXmlFile }}
+        run: mvn clean verify -P dev -DsuiteXmlFile=${{ github.event.inputs.suite_xml }}
+
 
       - name: Generate Allure Report
         run: mvn allure:report

@@ -117,7 +117,6 @@
     <profiles>
         <profile>
             <id>dev</id>
-                <!-- Параметр для передачи пути к suite XML файлу -->
             <build>
                 <plugins>
                     <plugin>
@@ -126,8 +125,7 @@
                         <version>2.22.2</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <!--suppress UnresolvedMavenProperty -->
-                                <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                                <suiteXmlFile>${suiteXmlFile}</suiteXmlFile> <!-- Подставляем переменную -->
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
