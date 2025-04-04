@@ -152,7 +152,7 @@
                                         </argLine>
                                         <suiteXmlFiles>
                                             <suiteXmlFile>
-                                                ${suiteXmlFile}
+                                                ${project.basedir}/src/test/resources/suite/${default.suiteXmlFile}.xml
                                             </suiteXmlFile>
                                         </suiteXmlFiles>
                                     </configuration>
