@@ -25,7 +25,7 @@ jobs:
         run: mvn clean verify -P e2e-tests
 
       - name: Generate Allure Report
-        run: mvn allure:report
+        run: mvn allure:generate
 
       - name: Upload Allure results as artifact
         uses: actions/upload-artifact@v4

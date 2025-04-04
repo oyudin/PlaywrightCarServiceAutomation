@@ -19,34 +19,34 @@ public class MainPage extends AbstractBasePage {
     public void openPage() {
 //        playwrightPage.navigate("http://localhost:8080/carservice/clients");
     }
-
-    @Override
-    public MainPage openPage(String pageName) {
-//        playwrightPage.navigate(MAIN_PAGE_URL);
-        return this;
-    }
-
+//
+//    @Override
+//    public MainPage openPage(String pageName) {
+////        playwrightPage.navigate(MAIN_PAGE_URL);
+//        return this;
+//    }
+//
     @Step
     public MainPage isOpened() {
 //        String currentUrl = playwrightPage.url();
 //        Assert.assertEquals(currentUrl, MAIN_PAGE_URL);
         return this;
     }
-
-    @Step
-    public MainPage checkSearchButton() {
-        playwrightPage.navigate("http://localhost:8080/carservice/clients");
-        PlaywrightAssertions.assertThat(searchButton).isVisible();
-        return this;
-    }
-
-    @Step
-    public MainPage enterClientNameInSearchField(String clientName) {
-        searchInput.fill(clientName);
-        PlaywrightAssertions.assertThat(searchInput).hasValue(clientName);
-        searchButton.click();
-        return this;
-    }
+//
+//    @Step
+//    public MainPage checkSearchButton() {
+//        playwrightPage.navigate("http://localhost:8080/carservice/clients");
+//        PlaywrightAssertions.assertThat(searchButton).isVisible();
+//        return this;
+//    }
+//
+//    @Step
+//    public MainPage enterClientNameInSearchField(String clientName) {
+//        searchInput.fill(clientName);
+//        PlaywrightAssertions.assertThat(searchInput).hasValue(clientName);
+//        searchButton.click();
+//        return this;
+//    }
 
 
 }
