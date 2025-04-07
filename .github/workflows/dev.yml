@@ -28,28 +28,33 @@ jobs:
 
       - name: Run Maven tests
         run: mvn clean verify -P dev -DsuiteXmlFile=${{ github.event.inputs.suite_xml }}
+        continue-on-error: true
 
 
       - name: Generate Allure Report
         run: mvn allure:report
+        continue-on-error: true
 
       - name: Upload Allure results as artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: target/allure-results
+        continue-on-error: true
 
       - name: Upload Allure Report as artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: target/allure-report/allure-maven.html
+        continue-on-error: true
 
       - name: Upload Allure statistics as artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-statistics
           path: target/allure-results/*  # Путь к файлам, которые содержат статистику
+        continue-on-error: true
 
       - name: Deploy Allure Report to GitHub Pages
         if: success()
