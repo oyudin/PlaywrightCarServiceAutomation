@@ -18,7 +18,7 @@
         <maven-failsafe-plugin.version>3.3.1</maven-failsafe-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <default.suiteXmlFile>uiSuite</default.suiteXmlFile>
+<!--        <default.suiteXmlFile>uiSuite</default.suiteXmlFile>-->
 
         <allure.version>2.22.0</allure.version>
         <allure-maven.version>2.12.0</allure-maven.version>
