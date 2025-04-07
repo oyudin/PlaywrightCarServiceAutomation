@@ -108,6 +108,16 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
     <profiles>
         <profile>
             <id>dev</id>
@@ -124,7 +134,8 @@
                             </suiteXmlFiles>
                             <systemPropertyVariables>
                                 <property>
-                                    <name>allure.results.directory</name> <!-- Директория, в которой Allure будет сохранять результаты -->
+                                    <name>allure.results.directory
+                                    </name> <!-- Директория, в которой Allure будет сохранять результаты -->
                                     <value>target/allure-results</value>
                                 </property>
                             </systemPropertyVariables>
