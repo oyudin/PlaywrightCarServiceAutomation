@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Apr 08 16:56:40 UTC 2025","Tue Apr 08 16:56:40 UTC 2025","823","UI suite","UI tests Chrome","org.example.carService.uiTests.PipelineTest","org.example.carService.uiTests.PipelineTest","pipelineTest","pipelineTest",""
-"passed","Tue Apr 08 16:56:39 UTC 2025","Tue Apr 08 16:56:39 UTC 2025","25","UI suite","UI tests Chrome","org.example.carService.uiTests.MainPageTest","org.example.carService.uiTests.MainPageTest","testSearchButton","testSearchButton",""
