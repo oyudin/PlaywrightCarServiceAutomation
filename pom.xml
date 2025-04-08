@@ -13,6 +13,7 @@
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+<!--        Use 1 compiler property instead of 2  -->
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <maven-failsafe-plugin.version>3.3.1</maven-failsafe-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,6 +61,8 @@
             <version>${aspectj.version}</version>
             <scope>compile</scope>
         </dependency>
+<!--        Used for Allure annotations-->
+
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-java-commons</artifactId>
@@ -78,6 +81,8 @@
             <version>${logback.version}</version>
             <scope>test</scope>
         </dependency>
+<!--    Displays logs in readable format  (try without)  -->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -96,6 +101,8 @@
             <version>4.2.0</version>
             <scope>test</scope>
         </dependency>
+<!--    Used for DB and API verification. Works as waiters. Read about functions    -->
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -108,15 +115,16 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>${allure-maven.version}</version>
-            </plugin>
-        </plugins>
-    </build>
+<!--    Section build runs -->
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>io.qameta.allure</groupId>-->
+<!--                <artifactId>allure-maven</artifactId>-->
+<!--                <version>${allure-maven.version}</version>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
     <profiles>
         <profile>
